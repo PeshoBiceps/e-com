@@ -6,8 +6,8 @@ const Layout = ({ children }) => {
 
 
       <Navbar />
-      <main className='my-10'>{children}</main>
-    </div>
+      <main>{children}</main>
+    </div >
   )
 }
 

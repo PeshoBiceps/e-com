@@ -1,28 +1,29 @@
 import data from '../utils/data'
 import Image from 'next/image'
 import Link from 'next/link'
+import { IoBagAddOutline } from 'react-icons/io5'
 
 const MainProducts = () => {
   return (
     <div className='grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4'>
       {data.products.map((item) => (
-        <Link key={item.name} href={`/product/${item.slug}`} passHref>
-          <div className='flex flex-col m-2 bg-gray-100 rounded-sm shadow-md h-[320px]'>
-            <div className='relative h-72 w-full'>
+        <div key={item.name} className='flex flex-col m-2 rounded-sm shadow-md h-[300px] md:h-[420px]'>
+          <Link href={`/product/${item.slug}`} passHref>
+            <div className='relative h-full w-full sm:cursor-pointer'>
               <Image
                 src={item.image}
                 layout='fill'
                 objectFit='cover'
-                className='rounded-sm'
               />
             </div>
-            <h1 className='font-semibold py-2 px-5'>{item.name}</h1>
-            <div className='flex justify-between px-4'>
-              <p className='font-bold'>${item.price}</p>
-              <button className='text-red-500 font-semibold'>Add To Cart</button>
-            </div>
+          </Link>
+          <h1 className='text-xs p-1'>{item.name}</h1>
+          <div className='flex justify-between p-1'>
+            <p className='text-sm font-semibold'>${item.price}</p>
+            <button className=''><IoBagAddOutline className='h-5 w-5' /></button>
           </div>
-        </Link>
+        </div>
+
 
 
       ))
