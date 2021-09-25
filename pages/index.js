@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <div>
       <Head>
-        <title>E-com</title>
+        <title>PeGo Shop</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

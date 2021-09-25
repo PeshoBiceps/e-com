@@ -1,46 +1,69 @@
-import { useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { Transition } from "@headlessui/react";
+import Image from 'next/image'
+import Link from 'next/link'
 
 const Navbar = () => {
 
-  const [isOpen, setIsOpen] = useState(false);
+  const ref = useRef(null);
+
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+  useEffect(() => {
+    const checkIfClickedOutside = e => {
+      // If the menu is open and the clicked target is not within the menu,
+      // then close the menu
+      if (isMenuOpen && ref.current && !ref.current.contains(e.target)) {
+        setIsMenuOpen(false)
+      }
+    }
+
+    document.addEventListener("mousedown", checkIfClickedOutside)
+
+    return () => {
+      // Cleanup the event listener
+      document.removeEventListener("mousedown", checkIfClickedOutside)
+    }
+  }, [isMenuOpen])
 
   return (
-    <nav className="bg-gray-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+    <nav ref={ref} className="bg-gray-100 text-gray-900 shadow-md">
+      <div>
 
-          <div className="flex items-center">
-            <div className="flex-shrink-0">
-              <span>Logo</span>
+        <div className='h-16 px-10 flex items-center justify-between'>
+
+          <div>
+            <div>
+              <Link href='/'>
+                <span className='md:cursor-pointer'>PeGo Shop</span>
+              </Link>
             </div>
-
-            <div className="hidden md:block">
-              <div className="ml-10 flex items-baseline space-x-4">
-                <a href="#" className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium">
-                  Contacts
-                </a>
-                <a href="#" className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium">
-                  Profile
-                </a>
-                <a href="#" className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium">
-                  Cart
-                </a>
-              </div>
-            </div>
-
           </div>
 
-          <div className="-mr-2 flex md:hidden">
+          <div className="hidden md:flex">
+            <div className="ml-10 flex space-x-4">
+              <Link href="/contacts">
+                Contacts
+              </Link>
+              <Link href="/profile">
+                Profile
+              </Link>
+              <Link href="/cart">
+                Cart
+              </Link>
+            </div>
+          </div>
+
+          <div className="-mr-8 flex md:hidden">
             <button
-              onClick={() => setIsOpen(!isOpen)}
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
               type="button"
-              className="bg-gray-900 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-800 focus:outline-none"
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-900 focus:outline-none"
               aria-controls="mobile-menu"
               aria-expanded="false"
             >
               <span className="sr-only ">Open main menu</span>
-              {!isOpen ? (
+              {!isMenuOpen ? (
                 <svg
                   className="block h-6 w-6"
                   xmlns="http://www.w3.org/2000/svg"
@@ -79,54 +102,31 @@ const Navbar = () => {
       </div>
 
       <Transition
-        show={isOpen}
-        enter="transition ease-out duration-100 transform"
+        show={isMenuOpen}
+        enter="transition ease-out duration-175 transform"
         enterFrom="opacity-0 scale-95"
         enterTo="opacity-100 scale-100"
-        leave="transition ease-in duration-75 transform"
+        leave="transition ease-in duration-175 transform"
         leaveFrom="opacity-100 scale-100"
         leaveTo="opacity-0 scale-95"
       >
-        {(ref) => (
-          <div className="md:hidden" id="mobile-menu">
-            <div ref={ref} className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-              <a
-                href="#"
-                className="hover:bg-gray-700 text-white block px-3 py-2 rounded-md text-base font-medium"
-              >
-                Dashboard
-              </a>
 
-              <a
-                href="#"
-                className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-              >
-                Team
-              </a>
+        <div className="md:hidden px-2 bg-gray-200 font-medium" id="mobile-menu">
+          <div className="flex flex-col items-start justify-center px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <Link href="/contacts">
+              <span className='border-b border-gray-300'>Contacts</span>
+            </Link>
 
-              <a
-                href="#"
-                className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-              >
-                Projects
-              </a>
+            <Link href="/profile">
+              <span className='border-b border-gray-300'>Profile</span>
+            </Link>
 
-              <a
-                href="#"
-                className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-              >
-                Calendar
-              </a>
-
-              <a
-                href="#"
-                className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-              >
-                Reports
-              </a>
-            </div>
+            <Link href="/cart">
+              <span className='border-b border-gray-300'>Cart</span>
+            </Link>
           </div>
-        )}
+        </div>
+
 
       </Transition>
     </nav>
