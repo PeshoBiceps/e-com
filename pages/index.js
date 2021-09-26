@@ -1,4 +1,4 @@
-import Head from 'next/head'
+import Layout from '../components/Layout';
 import MainBanner from '../components/MainBanner';
 import MainCarousel from '../components/MainCarousel';
 import MainProducts from "../components/MainProducts";
@@ -6,12 +6,7 @@ import MainProducts from "../components/MainProducts";
 
 export default function Home() {
   return (
-    <div>
-      <Head>
-        <title>PeGo Shop</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
+    <Layout>
       <main className=''>
         <section>
           <MainBanner />
@@ -27,7 +22,6 @@ export default function Home() {
         </section>
 
       </main>
-    </div>
-
+    </Layout>
   )
 }

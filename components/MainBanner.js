@@ -3,7 +3,7 @@ import Image from 'next/image'
 const MainBanner = () => {
   return (
     <div className='relative group'>
-      <div className='relative h-[30vh] md:h-[55vh] w-full'>
+      <div className='relative min-h-[300px] h-[30vh] md:h-[55vh] w-full'>
         <Image
           src='/images/a.jpg'
           layout='fill'
