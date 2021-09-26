@@ -1,6 +1,4 @@
-import { useRouter } from "next/dist/client/router"
 import Layout from "../../components/Layout"
-import data from "../../utils/data"
 import Link from 'next/link'
 import Image from 'next/image'
 import { RiLuggageCartLine } from 'react-icons/ri'
@@ -9,17 +7,16 @@ import { HiOutlineSwitchHorizontal, HiArrowLeft } from 'react-icons/hi'
 import ProductAccordion from "../../components/ProductAccordion"
 import ProductStar from "../../components/ProductStar"
 
-const ProductScreen = () => {
-  const router = useRouter()
-  const { slug } = router.query
-  console.log(data)
-  const product = data.products.find(a => a.slug === slug)
-  if (!product) {
-    return <div>Product not found</div>
-  }
+export default function ProductScreen({ product }) {
+
+  console.log(product)
+
+  const { name, slug, category, image, price, brand, rating, numReviews, countInStock, description } = product[0]
+
+
 
   return (
-    <Layout title={product.name}>
+    <Layout title={name}>
       <div className='p-5'>
         <Link href='/'>
           <div className='flex items-center'>
@@ -34,32 +31,32 @@ const ProductScreen = () => {
         <div className='flex flex-wrap px-4 justify-evenly'>
           <div className='relative h-[380px] min-w-[310px] w-[95%] md:h-[580px] md:w-[60%]'>
             <Image
-              src={product.image}
+              src={image}
               layout='fill'
               objectFit='cover'
             />
           </div>
 
           <div className='p-6 min-w-[290px] w-[95%] md:w-[40%]'>
-            <h1 className='font-semibold py-3'>{product.name}</h1>
+            <h1 className='font-semibold py-3'>{name}</h1>
 
             <div className='flex flex-col'>
               <div className='flex justify-between py-2 items-end'>
-                <p className='font-bold'>{product.price} EUR</p>
-                <p className='text-xs'>{product.countInStock > 0 ? 'In stock' : 'Unvailable'}</p>
+                <p className='font-bold'>{price} EUR</p>
+                <p className='text-xs'>{countInStock > 0 ? 'In stock' : 'Unvailable'}</p>
               </div>
               <button className='bg-black text-white font-semibold p-2 shadow-sm'>ADD TO CART</button>
             </div>
 
             <div className='my-6'>
-              <p>Category: {product.category}</p>
-              <p>Brand: {product.brand}</p>
-              <p>Rating: {product.rating}</p>
-              <p>Description: {product.description}</p>
+              <p>Category: {category}</p>
+              <p>Brand: {brand}</p>
+              <p>Rating: {rating}</p>
+              <p>Description: {description}</p>
             </div>
 
             <div className='mb-4'>
-              <ProductStar rating={Math.round(product.rating)} />
+              <ProductStar rating={Math.round(rating)} />
             </div>
 
 
@@ -84,10 +81,21 @@ const ProductScreen = () => {
         </div>
       </main>
 
-
     </Layout>
-
   )
 }
 
-export default ProductScreen
+export async function getServerSideProps({ params }) {
+
+  const product = await fetch(`http://localhost:5000/api/product/${params.slug}`)
+    .then(res => res.json())
+
+  return {
+    props: {
+      product,
+    }
+  }
+}
+
+
+

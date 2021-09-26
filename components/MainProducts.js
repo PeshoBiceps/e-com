@@ -1,12 +1,15 @@
-import data from '../utils/data'
 import Image from 'next/image'
 import Link from 'next/link'
 import { IoBagAddOutline } from 'react-icons/io5'
 
-const MainProducts = () => {
+const MainProducts = ({ products }) => {
+
+  console.log(products)
+
+
   return (
     <div className='grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4'>
-      {data.products.map((item) => (
+      {products.map((item) => (
         <div key={item.name} className='flex flex-col m-2 rounded-sm shadow-sm h-[300px] md:h-[420px]'>
           <Link href={`/product/${item.slug}`} passHref>
             <div className='relative h-full w-full sm:cursor-pointer'>
@@ -23,9 +26,6 @@ const MainProducts = () => {
             <button className=''><IoBagAddOutline className='h-5 w-5' /></button>
           </div>
         </div>
-
-
-
       ))
       }
     </div >

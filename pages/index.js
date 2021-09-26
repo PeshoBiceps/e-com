@@ -4,7 +4,10 @@ import MainCarousel from '../components/MainCarousel';
 import MainProducts from "../components/MainProducts";
 
 
-export default function Home() {
+export default function Home({ products }) {
+
+
+
   return (
     <Layout>
       <main className=''>
@@ -18,10 +21,20 @@ export default function Home() {
 
         <section className='max-w-[1200px] w-[90%] mx-auto'>
           <h1 className='text-2xl font-bold'>Products</h1>
-          <MainProducts />
+          <MainProducts products={products} />
         </section>
 
       </main>
     </Layout>
   )
+}
+
+export async function getStaticProps() {
+  const products = await fetch('http://localhost:5000/api/product').
+    then((res) => res.json())
+  return {
+    props: {
+      products
+    }
+  }
 }

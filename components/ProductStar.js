@@ -9,7 +9,7 @@ const ProductStar = ({ rating }) => {
         const ratingValue = i
 
         return (
-          < label >
+          <label key={i}>
             <input className='hidden' type='radio' name='rating' value={ratingValue} />
             <FaStar color={ratingValue < rating ? 'ffc107' : 'e4e5e9'} />
           </label>
