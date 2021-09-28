@@ -19,7 +19,7 @@ export default function ProductScreen({ product }) {
     <Layout title={name}>
       <div className='p-5'>
         <Link href='/'>
-          <div className='flex items-center'>
+          <div className='flex items-center sm:cursor-pointer'>
             <HiArrowLeft />
             <span className='ml-1'>Back to products</span>
           </div>
