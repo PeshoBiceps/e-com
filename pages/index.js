@@ -3,7 +3,6 @@ import MainBanner from '../components/MainBanner';
 import MainCarousel from '../components/MainCarousel';
 import MainProducts from "../components/MainProducts";
 
-
 export default function Home({ products }) {
 
 
