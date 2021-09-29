@@ -48,7 +48,7 @@ const Post = () => {
 
             <div className='w-full ml-2'>
               <label className=" text-gray-700 text-xs font-bold mb-2" htmlFor="slug">
-                Unique Slug
+                Unique Slug "ID"
               </label>
               <input onChange={onChangeSlug} value={slug} className=" w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 focus:outline-none focus:bg-white" id="slug" type="text" required />
             </div>
