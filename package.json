@@ -8,12 +8,14 @@
   "dependencies": {
     "@badrap/bar-of-progress": "^0.1.2",
     "@headlessui/react": "^1.4.1",
+    "@reduxjs/toolkit": "^1.6.1",
     "framer-motion": "^4.1.17",
     "next": "latest",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-icons": "^4.2.0",
-    "react-multi-carousel": "^2.6.5"
+    "react-multi-carousel": "^2.6.5",
+    "react-redux": "^7.2.5"
   },
   "devDependencies": {
     "autoprefixer": "^10.2.6",

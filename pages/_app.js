@@ -1,5 +1,7 @@
 import 'tailwindcss/tailwind.css'
 import Router from 'next/router';
+import { store } from '../app/store';
+import { Provider } from 'react-redux'
 
 import ProgressBar from "@badrap/bar-of-progress";
 
@@ -17,7 +19,9 @@ Router.events.on('routeChangeError', progress.finish)
 
 function MyApp({ Component, pageProps }) {
   return (
-    <Component {...pageProps} />
+    <Provider store={store}>
+      <Component {...pageProps} />
+    </Provider>
   )
 }
 

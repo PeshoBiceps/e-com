@@ -56,6 +56,7 @@ const Post = () => {
     })
     const data = await response.json()
     console.log(data)
+    alert('GJ !!!')
   }
 
   return (
