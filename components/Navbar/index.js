@@ -20,7 +20,7 @@ const Navbar = () => {
               <FaRegUser className='h-6 w-6' /><span className='hidden sm:inline-flex'>Profile</span>
             </div>
           </Link>
-          <Link href='/Cart'>
+          <Link href='/cart'>
             <div className='flex items-center md:cursor-pointer'>
               <BiShoppingBag className='h-7 w-7' /><span className='hidden sm:inline-flex'>Cart</span>
             </div>
