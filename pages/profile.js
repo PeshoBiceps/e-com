@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { useSelector } from "react-redux"
 import { FaRegUser } from 'react-icons/fa'
 import { IoShirtOutline } from 'react-icons/io5'
+import { BiExit } from 'react-icons/bi'
 
 const Profile = () => {
 
@@ -17,6 +18,7 @@ const Profile = () => {
           <div className='mt-3 space-y-2'>
             <p className='flex items-center border-b-2 text-gray-500 hover:text-black hover:border-black transition ease-in-out delay-75 sm:cursor-pointer'><FaRegUser />My Profile</p>
             <p className='flex items-center border-b-2 text-gray-500 hover:text-black hover:border-black transition ease-in-out delay-75 sm:cursor-pointer'><IoShirtOutline />My Orders</p>
+            <p className='flex items-center border-b-2 text-gray-500 hover:text-black hover:border-black transition ease-in-out delay-75 sm:cursor-pointer'><BiExit />Log out</p>
           </div>
           <div className='w-[360px]'>
             <h2 className='text-xl font-semibold'>
