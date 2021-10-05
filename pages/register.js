@@ -19,7 +19,7 @@ const Register = () => {
     setPassword(e.target.value)
   }
 
-  const handleSubmit = async (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault()
     const response = await fetch('http://localhost:5000/user/register', {
       method: "POST",
@@ -41,7 +41,7 @@ const Register = () => {
         </div>
 
         <div className='flex flex-col m-auto'>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleRegister}>
             <div>
               <h1 className="text-2xl font-bold">Register your account</h1>
             </div>
