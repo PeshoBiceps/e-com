@@ -1,26 +1,21 @@
 import Layout from "../components/Layout"
 import Image from 'next/image'
 import Link from 'next/link'
-import { useState } from "react"
+import { useRef } from "react"
 
 const Register = () => {
 
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-
-  const handleName = (e) => {
-    setName(e.target.value)
-  }
-  const handleEmail = (e) => {
-    setEmail(e.target.value)
-  }
-  const handlePassword = (e) => {
-    setPassword(e.target.value)
-  }
+  const nameRef = useRef()
+  const emailRef = useRef()
+  const passwordRef = useRef()
 
   const handleRegister = async (e) => {
     e.preventDefault()
+
+    const name = nameRef.current.value
+    const email = emailRef.current.value
+    const password = passwordRef.current.value
+
     const response = await fetch('http://localhost:5000/user/register', {
       method: "POST",
       body: JSON.stringify({ name, email, password }),
@@ -47,15 +42,15 @@ const Register = () => {
             </div>
             <div className="my-3">
               <label className="block text-md mb-2" htmlFor="name">Name</label>
-              <input onChange={handleName} className="px-4 w-full border-2 py-2 rounded-md text-sm outline-none" type='text' name="name" placeholder="name" />
+              <input ref={nameRef} className="px-4 w-full border-2 py-2 rounded-md text-sm outline-none" type='text' name="name" placeholder="name" />
             </div>
             <div className="my-3">
               <label className="block text-md mb-2" htmlFor="email">Email</label>
-              <input onChange={handleEmail} className="px-4 w-full border-2 py-2 rounded-md text-sm outline-none" type="email" name="email" placeholder="email" />
+              <input ref={emailRef} className="px-4 w-full border-2 py-2 rounded-md text-sm outline-none" type="email" name="email" placeholder="email" />
             </div>
             <div className="mt-3">
               <label className="block text-md mb-2" htmlFor="password">Password</label>
-              <input onChange={handlePassword} className="px-4 w-full border-2 py-2 rounded-md text-sm outline-none" type="password" name="password" placeholder="password" />
+              <input ref={passwordRef} className="px-4 w-full border-2 py-2 rounded-md text-sm outline-none" type="password" name="password" placeholder="password" />
             </div>
             <div>
               <button className="mt-4 mb-3 w-full bg-black hover:bg-black-900 text-white py-2 rounded-md transition duration-100">Register</button>
