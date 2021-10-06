@@ -54,20 +54,18 @@ const Profile = () => {
 
 export default Profile
 
-export async function getServerSideProps(context) {
-  const res = await fetch(`https://.../data`)
-  const user = await res.json()
-
+export async function getServerSideProps(req) {
+  const user = req.header
+  console.log(user)
   if (!user) {
     return {
       redirect: {
-        destination: '/',
+        destination: '/register',
         permanent: false,
       },
-    }
+    };
   }
-
   return {
-    props: {}, // will be passed to the page component as props
-  }
+    props: user,
+  };
 }
