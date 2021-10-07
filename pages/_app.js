@@ -2,6 +2,7 @@ import 'tailwindcss/tailwind.css'
 import Router from 'next/router';
 import { store } from '../app/store';
 import { Provider } from 'react-redux'
+import { Provider as AuthProvider } from "next-auth/client";
 
 import ProgressBar from "@badrap/bar-of-progress";
 
@@ -20,7 +21,9 @@ Router.events.on('routeChangeError', progress.finish)
 function MyApp({ Component, pageProps }) {
   return (
     <Provider store={store}>
-      <Component {...pageProps} />
+      <AuthProvider session={pageProps.session}>
+        <Component {...pageProps} />
+      </AuthProvider>
     </Provider>
   )
 }

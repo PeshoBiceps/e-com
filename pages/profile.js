@@ -1,17 +1,10 @@
 import Layout from "../components/Layout"
-import Image from 'next/image'
-import { useSelector, useDispatch } from "react-redux"
 import { FaRegUser } from 'react-icons/fa'
 import { IoShirtOutline } from 'react-icons/io5'
 import { BiExit } from 'react-icons/bi'
-import { setUserLogOut } from "../features/user/userSlice"
+import { getSession, signOut } from "next-auth/client"
 
-const Profile = () => {
-
-  const user = useSelector(state => state.user)
-  const dispatch = useDispatch()
-
-  console.log(user)
+const Profile = ({ user }) => {
 
   return (
     <Layout title='My Profile'>
@@ -20,15 +13,15 @@ const Profile = () => {
           <div className='mt-3 space-y-2'>
             <p className='flex items-center border-b-2 rounded-sm text-gray-500 hover:text-black hover:border-black transition ease-in-out delay-75 sm:cursor-pointer'><FaRegUser />My Profile</p>
             <p className='flex items-center border-b-2 rounded-sm text-gray-500 hover:text-black hover:border-black transition ease-in-out delay-75 sm:cursor-pointer'><IoShirtOutline />My Orders</p>
-            <p onClick={() => dispatch(setUserLogOut)} className='flex items-center border-b-2 rounded-sm text-gray-500 hover:text-black hover:border-black transition ease-in-out delay-75 sm:cursor-pointer'><BiExit />Log out</p>
+            <p onClick={() => signOut({ callbackUrl: 'http://localhost:3000/' })} className='flex items-center border-b-2 rounded-sm text-gray-500 hover:text-black hover:border-black transition ease-in-out delay-75 sm:cursor-pointer'><BiExit />Log out</p>
           </div>
           <div className='w-[360px]'>
             <h2 className='text-xl font-semibold'>
               Personal info
             </h2>
             <div className='bg-gray-100 px-7 py-2'>
-              <p className='font-semibold'>{user.userName}</p>
-              <p>{user.userEmail}</p>
+              <p className='font-semibold'>{user.name}</p>
+              <p>{user.email}</p>
             </div>
           </div>
           <div className='w-[340px] space-y-3'>
@@ -47,25 +40,24 @@ const Profile = () => {
           </div>
         </div>
       </div>
-      <pre>{JSON.stringify(user, null, 2)}</pre>
-    </Layout>
+    </Layout >
   )
 }
 
 export default Profile
 
-export async function getServerSideProps(req) {
-  const user = req.header
-  console.log(user)
-  if (!user) {
+export async function getServerSideProps(ctx) {
+  const session = await getSession(ctx)
+  if (!session) {
     return {
       redirect: {
-        destination: '/register',
+        destination: '/auth/signin',
         permanent: false,
       },
-    };
+    }
   }
+  const { user } = session;
   return {
-    props: user,
-  };
+    props: { user },
+  }
 }

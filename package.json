@@ -9,6 +9,7 @@
     "@badrap/bar-of-progress": "^0.1.2",
     "@headlessui/react": "^1.4.1",
     "@reduxjs/toolkit": "^1.6.1",
+    "bcrypt": "^5.0.1",
     "framer-motion": "^4.1.17",
     "mongoose": "^6.0.9",
     "next": "latest",
