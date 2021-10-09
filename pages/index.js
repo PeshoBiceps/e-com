@@ -1,11 +1,14 @@
 import Layout from '../components/Layout';
 import MainBanner from '../components/MainBanner';
 import MainCarousel from '../components/MainCarousel';
-import MainProducts from "../components/MainProducts";
+import MainFeaturedProducts from "../components/MainFeaturedProducts";
+
+import Product from '../models/productModel'
+import { dbConnect } from '../utils/dbConnect';
 
 export default function Home({ products }) {
 
-
+  console.log(products)
 
   return (
     <Layout>
@@ -19,8 +22,8 @@ export default function Home({ products }) {
         </section>
 
         <section className='max-w-[1200px] w-[90%] mx-auto'>
-          <h1 className='text-2xl font-bold'>Products</h1>
-          <MainProducts products={products} />
+          <h1 className='text-2xl font-bold'>Featured products</h1>
+          <MainFeaturedProducts products={products} />
         </section>
 
       </main>
@@ -29,11 +32,13 @@ export default function Home({ products }) {
 }
 
 export async function getStaticProps() {
-  const products = await fetch(`http://localhost:3000/api/products`).
-    then((res) => res.json())
+
+  await dbConnect()
+  const data = await Product.find({ isFeatured: true })
+
   return {
     props: {
-      products: products.data
+      products: JSON.parse(JSON.stringify({ success: true, data: data }))
     }
   }
 }
