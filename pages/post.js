@@ -47,7 +47,7 @@ const Post = () => {
 
   const submitProduct = async (e) => {
     e.preventDefault()
-    const response = await fetch('http://localhost:5000/api/product', {
+    const response = await fetch('http://localhost:3000/api/products', {
       method: "POST",
       body: JSON.stringify({ name, slug, category, isFeatured, brand, rating, countInStock, price, image, description }),
       headers: {
