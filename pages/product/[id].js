@@ -8,17 +8,19 @@ import ProductAccordion from "../../components/ProductAccordion"
 import ProductStar from "../../components/ProductStar"
 import { useState } from 'react'
 import Fail from "../../components/Fail"
+import { dbConnect } from '../../utils/dbConnect'
+import Product from '../../models/productModel'
 
 export default function ProductScreen({ data }) {
 
   const [prod, setProd] = useState(data)
 
-  console.log(prod.result)
+  console.log(prod)
 
-  const { name, slug, category, image, price, brand, rating, numReviews, countInStock, description } = prod.product
+  const { name, slug, category, image, price, brand, rating, numReviews, countInStock, description } = prod.data
 
   return (
-    prod.result ? (
+    prod.success ? (
       <Layout title={name}>
         <div className='p-5'>
           <Link href='/'>
@@ -91,12 +93,12 @@ export default function ProductScreen({ data }) {
 
 export async function getServerSideProps({ params: { id } }) {
 
-  const data = await fetch(`http://localhost:5000/api/product/${id}`)
-    .then(res => res.json())
+  await dbConnect()
+  const data = await Product.findById(id)
 
   return {
     props: {
-      data,
+      data: JSON.parse(JSON.stringify({ success: true, data: data }))
     }
   }
 }
