@@ -7,9 +7,6 @@ import Product from '../models/productModel'
 import { dbConnect } from '../utils/dbConnect';
 
 export default function Home({ products }) {
-
-  console.log(products)
-
   return (
     <Layout>
       <main className=''>
