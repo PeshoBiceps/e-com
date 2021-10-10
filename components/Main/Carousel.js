@@ -2,7 +2,7 @@ import Carousel from "react-multi-carousel";
 import Image from 'next/image'
 import "react-multi-carousel/lib/styles.css";
 
-const MainCarousel = () => {
+const Carousele = () => {
 
   const responsive = {
     desktop: {
@@ -49,4 +49,4 @@ const MainCarousel = () => {
   )
 }
 
-export default MainCarousel
+export default Carousele

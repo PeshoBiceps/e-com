@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-const MainBanner = () => {
+const Banner = () => {
   return (
     <div className='relative group'>
       <div className='relative min-h-[300px] h-[30vh] md:h-[55vh] w-full'>
@@ -21,4 +21,4 @@ const MainBanner = () => {
   )
 }
 
-export default MainBanner
+export default Banner

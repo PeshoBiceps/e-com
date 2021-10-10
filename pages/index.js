@@ -1,7 +1,7 @@
 import Layout from '../components/Layout';
-import MainBanner from '../components/MainBanner';
-import MainCarousel from '../components/MainCarousel';
-import MainFeaturedProducts from "../components/MainFeaturedProducts";
+import Banner from '../components/Main/Banner';
+import Carousele from '../components/Main/Carousel';
+import FeaturedProducts from "../components/Main/FeaturedProducts";
 
 import Product from '../models/productModel'
 import { dbConnect } from '../utils/dbConnect';
@@ -14,16 +14,20 @@ export default function Home({ products }) {
     <Layout>
       <main className=''>
         <section>
-          <MainBanner />
+          <Banner />
         </section>
 
         <section className='mx-[3%] my-6 sm:my-11'>
-          <MainCarousel />
+          <Carousele />
+        </section>
+
+        <section>
+
         </section>
 
         <section className='max-w-[1200px] w-[90%] mx-auto'>
           <h1 className='text-2xl font-bold'>Featured products</h1>
-          <MainFeaturedProducts products={products} />
+          <FeaturedProducts products={products} />
         </section>
 
       </main>
