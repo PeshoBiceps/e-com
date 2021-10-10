@@ -10,17 +10,21 @@ import { useState } from 'react'
 import Fail from "../../components/Fail"
 import { dbConnect } from '../../utils/dbConnect'
 import Product from '../../models/productModel'
+import { useDispatch } from "react-redux";
+
+import { addItem } from '../../features/cart/cartSlice'
 
 export default function ProductScreen({ data }) {
 
-  const [prod, setProd] = useState(data)
+  const { name, category, image, price, brand, rating, numReviews, countInStock, description } = data.data
+  const dispatch = useDispatch();
 
-  console.log(prod)
-
-  const { name, slug, category, image, price, brand, rating, numReviews, countInStock, description } = prod.data
+  const handleAddItem = () => {
+    dispatch(addItem(data.data));
+  };
 
   return (
-    prod.success ? (
+    data.success ? (
       <Layout title={name}>
         <div className='p-5'>
           <Link href='/'>
@@ -50,7 +54,7 @@ export default function ProductScreen({ data }) {
                   <p className='font-bold'>{price} EUR</p>
                   <p className='text-xs'>{countInStock > 0 ? 'In stock' : 'Unvailable'}</p>
                 </div>
-                <button className='bg-black text-white font-semibold p-2 shadow-sm'>ADD TO CART</button>
+                <button onClick={handleAddItem} className='bg-black text-white font-semibold p-2 shadow-sm'>ADD TO CART</button>
               </div>
 
               <div className='my-6'>

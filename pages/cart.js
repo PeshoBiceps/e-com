@@ -1,11 +1,15 @@
 import Layout from "../components/Layout"
-import Image from 'next/image'
-import { AiOutlineClose } from 'react-icons/ai'
+import { useSelector, useDispatch } from "react-redux";
 
 import Product from '../models/productModel'
 import { dbConnect } from '../utils/dbConnect';
+import Item from "../components/Cart/CartItem";
 
-const Cart = ({ products }) => {
+const Cart = () => {
+
+  const cartItems = useSelector((state) => state.cart.cartItems);
+  const quantity = useSelector((state) => state.cart.quantity);
+  const total = useSelector((state) => state.cart.totalAmount);
 
   return (
     <Layout title='Cart'>
@@ -13,41 +17,18 @@ const Cart = ({ products }) => {
         <h1 className='text-2xl font-semibold'>Shopping Cart</h1>
         <div className='flex flex-col md:flex-row'>
           <div className='flex flex-col flex-grow mt-3 sm:mt-6'>
-            {products.data.map((product) => (
-              <div className='flex border-b shadow-sm py-4 first:border-t ml-2 mr-8'>
-                <div className='relative h-52 w-40'>
-                  <Image
-                    src={product.image}
-                    layout='fill'
-                    objectFit='cover'
-                  />
-                </div>
-                <div className='pl-3 flex flex-grow'>
-                  <div className='flex-grow space-y-2'>
-                    <p className='text-gray-400 text-sm'>{product.name}</p>
-                    <p className='font-semibold'>{product.brand}</p>
-                    <label className=" text-gray-700 text-xs font-bold mb-2" htmlFor="size">Size:</label>
-                    <div className="relative">
-                      <select className="text-sm bg-gray-200" id="size" required>
-                        <option>S</option>
-                        <option>M</option>
-                        <option>L</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div className='flex flex-col items-end justify-between'>
-                    <button><AiOutlineClose className='text-red-600 text-xl' /></button>
-                    <p className='font-semibold'>{product.price} EUR</p>
-                  </div>
-                </div>
-              </div>
-            ))}
+            {quantity !== 0 ? (
+              cartItems.map(item => <Item item={item} key={item._id} />)
+            ) : (
+              <h1>Your cart is empty </h1>
+            )
+            }
           </div>
 
           <div className='min-w-[240px] max-h-[300px] py-6 px-2'>
             <div className='flex flex-col space-y-6'>
               <div className='flex justify-between'>
-                <p>Total: </p><span className='font-semibold'>123 EUR</span>
+                <p>Total: </p><span className='font-semibold'>{total} EUR</span>
               </div>
 
               <div className="relative">
