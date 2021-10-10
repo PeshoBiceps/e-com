@@ -1,8 +1,11 @@
 import Link from 'next/link'
 import { FaRegUser } from 'react-icons/fa'
 import { BiShoppingBag } from 'react-icons/bi'
+import { useSelector } from "react-redux";
+
 
 const Navbar = () => {
+  const quantity = useSelector((state) => state.cart.quantity);
 
   return (
     <nav className="sticky z-50 top-0 left-0 right-0 bg-gray-100 text-gray-900 shadow-md ">
@@ -23,6 +26,9 @@ const Navbar = () => {
           <Link href='/cart'>
             <div className='flex items-center md:cursor-pointer'>
               <BiShoppingBag className='h-7 w-7' /><span className='hidden sm:inline-flex'>Cart</span>
+              {quantity === 0 ? false :
+                <span className='flex items-center justify-center w-4 h-4 sm:ml-1 mt-1 text-xs bg-gray-300 rounded-xl'>{quantity}</span>
+              }
             </div>
           </Link>
         </div>
