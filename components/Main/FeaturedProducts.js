@@ -8,7 +8,7 @@ const FeatureProducts = ({ products }) => {
     <div className='grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4'>
       {products.data.map((item, i) => (
         <div key={item._id} className='flex flex-col m-2 rounded-sm shadow-sm h-[300px] md:h-[420px]'>
-          <Link href={`/product/${item._id}`} passHref>
+          <Link href={`/products/${item._id}`} passHref>
             <div className='relative h-full w-full sm:cursor-pointer'>
               <Image
                 src={item.image}
