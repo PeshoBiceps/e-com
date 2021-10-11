@@ -20,12 +20,12 @@ export default function Home({ products }) {
         </section>
 
         <section className='max-w-[1200px] w-[90%] mx-auto'>
-          <Browse />
-        </section>
-
-        <section className='max-w-[1200px] w-[90%] mx-auto'>
           <h1 className='text-2xl font-bold'>Featured products</h1>
           <FeaturedProducts products={products} />
+        </section>
+
+        <section className=''>
+          <Browse />
         </section>
 
       </main>
