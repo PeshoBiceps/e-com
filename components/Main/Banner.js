@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 const Banner = () => {
   return (
-    <div className='relative group'>
+    <div className='relative'>
       <div className='relative min-h-[300px] h-[30vh] md:h-[55vh] w-full'>
         <Image
           src='/images/a.jpg'
