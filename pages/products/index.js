@@ -8,10 +8,8 @@ import Product from '../../models/productModel'
 
 
 const Products = ({ products, page, numberOfProducts }) => {
-  console.log(products.data)
-  const router = useRouter()
 
-  console.log(numberOfProducts)
+  const router = useRouter()
 
   const lastPage = Math.ceil(numberOfProducts / 6)
 

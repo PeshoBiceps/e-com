@@ -1,19 +1,25 @@
+//Components
 import Layout from "../../components/Layout"
-import Link from 'next/link'
-import Image from 'next/image'
-import { RiLuggageCartLine } from 'react-icons/ri'
-import { FiTruck } from 'react-icons/fi'
-import { HiOutlineSwitchHorizontal, HiArrowLeft } from 'react-icons/hi'
 import ProductAccordion from "../../components/ProductAccordion"
 import ProductStar from "../../components/ProductStar"
 import Fail from "../../components/Fail"
+//Next
+import Image from 'next/image'
+import { useRouter } from 'next/router'
+//Redux
+import { useDispatch } from "react-redux";
+import { addItem } from '../../features/cart/cartSlice'
+//DB
 import { dbConnect } from '../../utils/dbConnect'
 import Product from '../../models/productModel'
-import { useDispatch } from "react-redux";
-
-import { addItem } from '../../features/cart/cartSlice'
+//Icons
+import { RiLuggageCartLine } from 'react-icons/ri'
+import { FiTruck } from 'react-icons/fi'
+import { HiOutlineSwitchHorizontal, HiArrowLeft } from 'react-icons/hi'
 
 export default function ProductScreen({ data }) {
+
+  const router = useRouter()
 
   const { name, category, image, price, brand, rating, numReviews, countInStock, description } = data.data
   const dispatch = useDispatch();
@@ -26,12 +32,14 @@ export default function ProductScreen({ data }) {
     data.success ? (
       <Layout title={name}>
         <div className='p-5'>
-          <Link href='/'>
+
+          <div onClick={() => router.back()}>
             <div className='flex items-center sm:cursor-pointer'>
               <HiArrowLeft />
               <span className='ml-1'>Back to products</span>
             </div >
-          </Link >
+          </div>
+
         </div >
 
         <main className='max-w-[1000px] m-auto md:mt-6'>
@@ -90,7 +98,7 @@ export default function ProductScreen({ data }) {
         </main>
 
       </Layout >
-    ) : (<Fail />)
+    ) : (false)
   )
 }
 
