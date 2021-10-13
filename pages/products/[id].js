@@ -6,7 +6,6 @@ import { FiTruck } from 'react-icons/fi'
 import { HiOutlineSwitchHorizontal, HiArrowLeft } from 'react-icons/hi'
 import ProductAccordion from "../../components/ProductAccordion"
 import ProductStar from "../../components/ProductStar"
-import { useState } from 'react'
 import Fail from "../../components/Fail"
 import { dbConnect } from '../../utils/dbConnect'
 import Product from '../../models/productModel'

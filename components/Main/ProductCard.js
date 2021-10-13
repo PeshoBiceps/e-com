@@ -5,9 +5,8 @@ import { useDispatch } from 'react-redux'
 
 import { addItem } from '../../features/cart/cartSlice'
 
-const FeatureProducts = ({ products }) => {
+const ProductCard = ({ products }) => {
 
-  console.log(products.data)
   const dispatch = useDispatch()
 
   return (
@@ -25,7 +24,7 @@ const FeatureProducts = ({ products }) => {
           </Link>
           <h1 className='text-xs p-1'>{item.name}</h1>
           <div className='flex justify-between p-1'>
-            <p className='text-sm font-semibold'>{item.price}</p>
+            <p className='text-sm font-semibold'>{item.price} EUR</p>
             <button onClick={() => dispatch(addItem(item))}><IoBagAddOutline className='h-5 w-5' /></button>
           </div>
         </div>
@@ -36,4 +35,4 @@ const FeatureProducts = ({ products }) => {
   )
 }
 
-export default FeatureProducts
+export default ProductCard

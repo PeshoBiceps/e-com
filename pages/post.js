@@ -83,9 +83,9 @@ const Post = () => {
           <label className=" text-gray-700 text-xs font-bold mb-2" htmlFor="category">Categoty</label>
           <div className="relative">
             <select onChange={onChangeCategory} value={category} className=" w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded focus:outline-none focus:bg-white focus:border-gray-500" id="category" required>
-              <option>Shirts</option>
-              <option>Pants</option>
-              <option>Hats</option>
+              <option>shirts</option>
+              <option>pants</option>
+              <option>hats</option>
             </select>
           </div>
 
