@@ -1,5 +1,6 @@
 import Navbar from './Navbar'
 import Head from 'next/dist/shared/lib/head'
+import Footer from './Footer'
 
 const Layout = ({ children, title }) => {
   return (
@@ -10,7 +11,8 @@ const Layout = ({ children, title }) => {
       </Head>
 
       <Navbar />
-      <main>{children}</main>
+      <main className='min-h-[80vh]'>{children}</main>
+      <Footer />
     </div >
   )
 }
