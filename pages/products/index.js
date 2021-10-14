@@ -79,13 +79,20 @@ const Products = ({ products, page, numberOfProducts }) => {
 
 export default Products
 
-export async function getServerSideProps({ query: { page = 1 } }) {
+export async function getServerSideProps({ query }) {
+  let { page = 1 } = query
+  let { category = "" } = query
+  let { brand = "" } = query
 
   const start = +page === 1 ? 0 : (+page - 1) * 8
 
   await dbConnect()
 
   const numberOfProducts = await Product.estimatedDocumentCount()
+  const filterdCategory = category ? { category: category } : {}
+  const filterdBrand = brand ? { brand: brand } : {}
+  const filter = filterdBrand + filterdCategory
+  console.log(filter)
   const data = await Product.find().limit(8).skip(start)
 
 

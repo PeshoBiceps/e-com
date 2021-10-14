@@ -28,13 +28,13 @@ const Profile = ({ user }) => {
             <div className='space-y-3'>
               <h2 className='text-xl font-semibold'>Delivery method</h2>
               <div className='bg-gray-100 px-7 py-2'>
-                <p>undefined</p>
+                <p>standart</p>
               </div>
             </div>
             <div className='space-y-3'>
               <h2 className='text-xl font-semibold'>Payment method</h2>
               <div className='bg-gray-100 px-7 py-2'>
-                <p>undefined</p>
+                <p>standart</p>
               </div>
             </div>
           </div>
