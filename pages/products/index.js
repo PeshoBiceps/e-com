@@ -89,9 +89,9 @@ export async function getServerSideProps({ query }) {
   await dbConnect()
 
   const numberOfProducts = await Product.estimatedDocumentCount()
-  const filterdCategory = category ? { category: category } : {}
-  const filterdBrand = brand ? { brand: brand } : {}
-  const filter = filterdBrand + filterdCategory
+  const filterCategory = category ? { category: category } : {}
+  const filterBrand = brand ? { brand: brand } : {}
+  const filterAll = category && brand ? { brand: brand, category: category } : {}
   console.log(filter)
   const data = await Product.find().limit(8).skip(start)
 
