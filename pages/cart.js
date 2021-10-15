@@ -1,9 +1,9 @@
 import Layout from "../components/Layout"
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 import Product from '../models/productModel'
 import { dbConnect } from '../utils/dbConnect';
-import Item from "../components/Cart/CartItem";
+import CartItem from "../components/Cart/CartItem";
 
 const Cart = () => {
 
@@ -18,7 +18,7 @@ const Cart = () => {
         <div className='flex flex-col md:flex-row'>
           <div className='flex flex-col flex-grow mt-3 sm:mt-6'>
             {quantity !== 0 ? (
-              cartItems.map(item => <Item item={item} key={item._id} />)
+              cartItems.map(item => <CartItem item={item} key={item._id} />)
             ) : (
               <h1>Your cart is empty </h1>
             )

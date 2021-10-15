@@ -1,5 +1,4 @@
 import { useDispatch } from "react-redux";
-import Image from 'next/image'
 import { AiOutlineClose, AiOutlineLeft, AiOutlineRight } from 'react-icons/ai'
 
 import { removeItem, addItem, clearItemFromCart } from '../../features/cart/cartSlice'
@@ -14,20 +13,17 @@ const CartItem = ({ item }) => {
 
   return (
     <div key={_id} className='flex border-b shadow-sm py-4 first:border-t ml-2 mr-8 text-gray-700'>
-      <div className='relative h-52 w-40'>
-        <Image
-          src={image}
-          layout='fill'
-          objectFit='cover'
-        />
+      <div className='max-w-[150px]'>
+        <img src={image} alt='' />
       </div>
       <div className='pl-3 flex flex-grow'>
         <div className='flex flex-col justify-between flex-grow space-y-2'>
           <div>
-            <p className='text-gray-400 text-sm'>{name}</p>
-            <p className='font-semibold'>{brand}</p>
+            <p className='text-gray-400 text-xs sm:text-sm'>{name}</p>
+            <p className='font-semibold text-sm sm:text-base'>{brand}</p>
           </div>
-          <div className="relative">
+
+          <div>
             <div className='flex'>
               <p className='text-xs font-bold mt-[2px]'>Qty:</p>
               <div className='flex items-center ml-1 text-md' >
@@ -42,12 +38,13 @@ const CartItem = ({ item }) => {
               <option>L</option>
             </select>
           </div>
+
         </div>
         <div className='flex flex-col items-end justify-between'>
           <button onClick={handleClearItem} ><AiOutlineClose className='text-red-600 text-xl' /></button>
           <div className='flex flex-col items-end'>
-            <p className='text-sm'>{price} EUR</p>
-            <p className='font-semibold'>Total {quantity * price} EUR</p>
+            <p className=' text-xs sm:text-sm'>{price} EUR</p>
+            <p className='font-semibold text-xs text-right sm:text-base'>Total {quantity * price} EUR</p>
           </div>
         </div>
       </div>
