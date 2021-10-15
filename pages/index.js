@@ -2,7 +2,6 @@ import Layout from '../components/Layout';
 import Banner from '../components/Main/Banner';
 import Carousele from '../components/Main/Carousel';
 import ProductCard from "../components/Main/ProductCard";
-import Browse from '../components/Main/Browse'
 
 import Product from '../models/productModel'
 import { dbConnect } from '../utils/dbConnect';
@@ -19,13 +18,9 @@ export default function Home({ products }) {
           <Carousele />
         </section>
 
-        <section className='max-w-[1200px] w-[90%] mx-auto'>
+        <section className='max-w-[1200px] w-[90%] mx-auto mb-5'>
           <h1 className='text-2xl font-bold'>Featured products</h1>
           <ProductCard products={products} />
-        </section>
-
-        <section className=''>
-          <Browse />
         </section>
 
       </main>

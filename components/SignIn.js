@@ -29,7 +29,7 @@ const SignIn = () => {
           password: password,
         });
 
-        console.log(result.error)
+        result.error ? alert(result.error) : ''
 
         if (!result.error) {
           router.replace("/profile");
@@ -76,7 +76,7 @@ const SignIn = () => {
               <button className="mt-4 mb-3 w-full bg-black hover:bg-black-900 text-white py-2 rounded-md transition duration-100">Login now</button>
             </div>
           </form>
-          <p className="mt-8"> Dont have an account? <span className="cursor-pointer text-sm text-blue-600">
+          <p className="my-8"> Dont have an account? <span className="cursor-pointer text-sm text-blue-600">
             <Link href='/auth/signup'>
               Join free today
             </Link>

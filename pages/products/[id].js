@@ -45,12 +45,8 @@ export default function ProductScreen({ data }) {
         <main className='max-w-[1000px] m-auto md:mt-6'>
 
           <div className='flex flex-wrap px-4 justify-evenly'>
-            <div className='relative h-[380px] min-w-[310px] w-[95%] md:h-[580px] md:w-[60%]'>
-              <Image
-                src={image}
-                layout='fill'
-                objectFit='cover'
-              />
+            <div className='max-w-[450px] max-h-[550px]'>
+              <img src={image} className='w-[100%] h-[100%] object-cover' alt='' />
             </div>
 
             <div className='p-6 min-w-[290px] w-[95%] md:w-[40%]'>

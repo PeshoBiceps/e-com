@@ -91,8 +91,8 @@ const SignUp = () => {
               <button className="mt-4 mb-3 w-full bg-black hover:bg-black-900 text-white py-2 rounded-md transition duration-100">Register</button>
             </div>
           </form>
-          <p className="mt-8"> Already have an account ? <span className="cursor-pointer text-sm text-blue-600">
-            <Link href='/login'>
+          <p className="my-8"> Already have an account ? <span className="cursor-pointer text-sm text-blue-600">
+            <Link href='/auth/signin'>
               Sign in
             </Link>
           </span>

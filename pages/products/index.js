@@ -46,22 +46,20 @@ const Products = ({ products, page, numberOfProducts }) => {
         <section className='max-w-[1300px] w-[90%] mx-auto mt-2 sm:mt-10' >
           <div className='flex flex-col sm:flex-row'>
 
-            <div className=' sm:w-[130px] px-2 py-4 space-x-3'>
+            <div className='px-2 py-4 space-x-3 min-w-[140px]'>
               <h1 className='font-semibold mb-2 sm:border-b cursor-pointer' onClick={allProducts}>All products</h1>
               <div className='text-sm flex justify-around sm:flex-col'>
                 <p className='border-b sm:border-none cursor-pointer' onClick={() => setCategory('shirts')}>Shirts</p>
                 <p className='border-b sm:border-none cursor-pointer' onClick={() => setCategory('pants')}>Pants</p>
                 <p className='border-b sm:border-none cursor-pointer' onClick={() => setCategory('hats')}>Hats</p>
               </div>
-
             </div>
 
-            <div className='flex-col flex-grow mt-1 sm:mt-3'>
-
+            <div className='flex-col  mt-1 sm:mt-3'>
               <div className='flex px-2 space-x-1'>
                 <div>
                   <select onChange={handleChangeBrand} className="bg-gray-200 p-1 text-sm focus:outline-none focus:bg-gray-200 shadow-sm" id="brand">
-                    <option selected disabled hidden>Choose a brand</option>
+                    <option selected defaultValue disabled hidden>Choose a brand</option>
                     <option>Nike</option>
                     <option>Adidas</option>
                     <option>Karl Lagerfeld</option>
