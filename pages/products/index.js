@@ -15,7 +15,6 @@ const Products = ({ products, page, numberOfProducts }) => {
 
   const [brand, setBrand] = useState('')
   const [category, setCategory] = useState('')
-  console.log(brand)
 
   const lastPage = Math.ceil(numberOfProducts / 8)
 
@@ -91,10 +90,11 @@ export async function getServerSideProps({ query }) {
   const numberOfProducts = await Product.estimatedDocumentCount()
   const filterCategory = category ? { category: category } : {}
   const filterBrand = brand ? { brand: brand } : {}
-  const filterAll = category && brand ? { brand: brand, category: category } : {}
-  console.log(filter)
-  const data = await Product.find().limit(8).skip(start)
+  const a = category && brand ? { brand: brand, category: category } : {}
 
+  const filter = category && brand ? { category: category, brand: brand } : brand ? { brand: brand } : category ? { category: category } : {}
+  console.log(filter)
+  const data = await Product.find(filter).limit(8).skip(start)
 
   return {
     props: {
