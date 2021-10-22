@@ -1,11 +1,14 @@
 import Layout from "../components/Layout"
 import { useSelector } from "react-redux";
+import { useSession } from "next-auth/client"
 
-import Product from '../models/productModel'
-import { dbConnect } from '../utils/dbConnect';
 import CartItem from "../components/Cart/CartItem";
 
 const Cart = () => {
+
+  const [session, loading] = useSession()
+  console.log(session)
+
 
   const cartItems = useSelector((state) => state.cart.cartItems);
   const quantity = useSelector((state) => state.cart.quantity);
@@ -38,8 +41,11 @@ const Cart = () => {
                 </select>
               </div>
 
-              <button className='p-2 w-full bg-black text-white shadow-sm'>
-                Checkout
+              <button
+                role='link'
+                disabled={!session}
+                className={`p-2 w-full  shadow-sm ${!session ? 'bg-gray-400 text-gray-900 cursor-not-allowed' : 'bg-black text-white'}`}>
+                {!session ? 'Sign in to checkout' : 'Proceed to Checkout'}
               </button>
             </div>
 
@@ -51,15 +57,3 @@ const Cart = () => {
 }
 
 export default Cart
-
-export async function getStaticProps() {
-
-  await dbConnect()
-  const data = await Product.find({ isFeatured: true })
-
-  return {
-    props: {
-      products: JSON.parse(JSON.stringify({ success: true, data: data }))
-    }
-  }
-}

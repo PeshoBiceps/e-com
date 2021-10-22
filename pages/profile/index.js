@@ -1,4 +1,4 @@
-import Layout from "../components/Layout"
+import Layout from '../../components/Layout'
 import { FaRegUser } from 'react-icons/fa'
 import { IoShirtOutline } from 'react-icons/io5'
 import { BiExit } from 'react-icons/bi'
