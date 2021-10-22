@@ -2,9 +2,7 @@
 import Layout from "../../components/Layout"
 import ProductAccordion from "../../components/ProductAccordion"
 import ProductStar from "../../components/ProductStar"
-import Fail from "../../components/Fail"
 //Next
-import Image from 'next/image'
 import { useRouter } from 'next/router'
 //Redux
 import { useDispatch } from "react-redux";
