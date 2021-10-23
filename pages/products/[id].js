@@ -34,7 +34,7 @@ export default function ProductScreen({ data }) {
           <div onClick={() => router.back()}>
             <div className='flex items-center sm:cursor-pointer'>
               <HiArrowLeft />
-              <span className='ml-1'>Back to products</span>
+              <span className='ml-1'>Back</span>
             </div >
           </div>
 

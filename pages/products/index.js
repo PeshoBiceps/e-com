@@ -65,6 +65,7 @@ const Products = ({ products, page, numberOfProducts }) => {
                     <option>Karl Lagerfeld</option>
                     <option>HUGO</option>
                     <option>Calvin Klein</option>
+                    <option>EA7</option>
                   </select>
                 </div>
               </div>
