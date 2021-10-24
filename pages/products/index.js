@@ -1,12 +1,12 @@
 import Layout from '../../components/Layout'
 import ProductCard from '../../components/Main/ProductCard'
-
+//next,react
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
-
+//DB
 import { dbConnect } from '../../utils/dbConnect'
 import Product from '../../models/productModel'
-
+//Icons
 import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai'
 
 const Products = ({ products, page, numberOfProducts }) => {

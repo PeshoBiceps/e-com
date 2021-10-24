@@ -10,6 +10,7 @@ export default function Home({ products }) {
   return (
     <Layout>
       <main className=''>
+
         <section>
           <Banner />
         </section>
