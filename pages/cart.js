@@ -4,12 +4,11 @@ import { useSession } from "next-auth/client"
 import CartItem from "../components/Cart/CartItem";
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
-const stripePromise = loadStripe(process.env.STRIPE_PUBLIC_KEY)
+const stripePromise = loadStripe("pk_test_51Jo4HeHeVp56GqUd6dT6021EmW6e2je4U4k33qVHzdOR5FYbr4XwaYpNiChVmShNSp5sibyZdZXmN7xqSL9ASP58005pXjLpoE")
 
 const Cart = () => {
 
   const [session, loading] = useSession()
-  console.log(session)
 
   const cartItems = useSelector((state) => state.cart.cartItems);
   const quantity = useSelector((state) => state.cart.quantity);
