@@ -12,19 +12,19 @@ const Navbar = () => {
       <div className='h-16 flex items-center justify-between mx-5 font-medium'>
         <div>
           <Link href='/'>
-            <span className='md:cursor-pointer'>PeGo</span>
+            <span className='cursor-pointer'>PeGo</span>
           </Link>
 
         </div>
 
         <div className='flex space-x-3'>
           <Link href='/profile'>
-            <div className='flex items-center md:cursor-pointer'>
+            <div className='flex items-center cursor-pointer'>
               <FaRegUser className='h-6 w-6' /><span className='hidden sm:inline-flex'>Profile</span>
             </div>
           </Link>
           <Link href='/cart'>
-            <div className='flex items-center md:cursor-pointer'>
+            <div className='flex items-center cursor-pointer'>
               <BiShoppingBag className='h-7 w-7' /><span className='hidden sm:inline-flex'>Cart</span>
               {quantity === 0 ? false :
                 <span className='flex items-center justify-center w-4 h-4 sm:ml-1 mt-1 text-xs bg-gray-300 rounded-xl'>{quantity}</span>
