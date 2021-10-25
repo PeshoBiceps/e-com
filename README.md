@@ -1,6 +1,6 @@
 # E-commerce full stack project
 
-Full stack shop.
+Full stack e-commerce.
 
 Created with Next.JS, MongoDB/Mongoose, Redux.
 
@@ -11,6 +11,12 @@ Created with Next.JS, MongoDB/Mongoose, Redux.
 [Click Here For Preview](https://e-com-ten.vercel.app/)
 
 ## App Features
+
+-Authentication (NextAuth)
+-Payment (Stripe)
+-Pagination, Filtering products on the backend
+-Add new products
+-Cart
 
 ## Available pages
 
