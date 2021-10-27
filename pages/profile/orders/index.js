@@ -17,15 +17,15 @@ const Orders = ({ orders }) => {
 
   return (
     <Layout title='My orders'>
-      <div className='max-w-[900px] mx-auto mt-10 p-8 sm:p-0'>
-        <div className='flex flex-wrap justify-between'>
-          <div className='mt-3 space-y-2'>
-            <p onClick={() => router.push('/profile')} className='flex items-center border-b-2  rounded-sm text-gray-500 hover:text-black hover:border-black transition ease-in-out delay-75 sm:cursor-pointer'><FaRegUser />My Profile</p>
-            <p className='flex items-center border-b-2 rounded-sm border-gray-500 text-gray-900 hover:text-black hover:border-black transition ease-in-out delay-75 sm:cursor-pointer'><IoShirtOutline />My Orders</p>
-            <p onClick={() => signOut({ callbackUrl: 'http://localhost:3000/' })} className='flex items-center border-b-2 rounded-sm text-gray-500 hover:text-black hover:border-black transition ease-in-out delay-75 sm:cursor-pointer'><BiExit />Log out</p>
+      <div className='max-w-[900px] mx-auto mt-10 md:p-0'>
+        <div className='flex flex-col md:flex-row p-2 md:justify-between'>
+          <div className='flex flex-row justify-around mb-5 md:mb-0 md:flex-col md:justify-start'>
+            <p onClick={() => router.push('/profile')} className='flex items-center border-b-2  rounded-sm text-gray-500 hover:text-black hover:border-black transition ease-in-out delay-75 cursor-pointer'><FaRegUser />My Profile</p>
+            <p className='flex items-center border-b-2 rounded-sm border-gray-500 text-gray-900 hover:text-black hover:border-black transition ease-in-out delay-75 cursor-pointer'><IoShirtOutline />My Orders</p>
+            <p onClick={() => signOut({ callbackUrl: 'http://localhost:3000/' })} className='flex items-center border-b-2 rounded-sm text-gray-500 hover:text-black hover:border-black transition ease-in-out delay-75 cursor-pointer'><BiExit />Log out</p>
           </div>
 
-          <div className='w-[770px] space-y-3 my-2'>
+          <div className='w-[90vw] max-w-[740px] space-y-3 my-2 mx-auto'>
             <h2 className='text-xl font-semibold'>My orders</h2>
             {orders.data.length === 0 ? (<div>No orders yet</div>) : (
               orders.data.map((data) => (
