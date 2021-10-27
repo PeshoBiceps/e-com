@@ -2,7 +2,7 @@ import Layout from "../../../components/Layout"
 import moment from "moment"
 import { useRouter } from 'next/router'
 import Link from 'next/link'
-import { signOut } from "next-auth/client"
+import { getSession, signOut } from "next-auth/client"
 //Icons
 import { FaRegUser } from 'react-icons/fa'
 import { IoShirtOutline } from 'react-icons/io5'
@@ -12,7 +12,7 @@ import { dbConnect } from "../../../utils/dbConnect"
 import Order from '../../../models/orderModel'
 
 const Orders = ({ orders }) => {
-  console.log(orders)
+
   const router = useRouter()
 
   return (
@@ -63,14 +63,26 @@ const Orders = ({ orders }) => {
 
 export default Orders
 
-export async function getStaticProps() {
+export async function getServerSideProps(ctx) {
+  const session = await getSession(ctx)
+  if (!session) {
+    return {
+      redirect: {
+        destination: '/auth/signin',
+        permanent: false,
+      },
+    }
+  }
+  const { user } = session;
 
   await dbConnect()
-  const data = await Order.find({})
+  const data = await Order.find({ email: user.email })
+
 
   return {
     props: {
+      user,
       orders: JSON.parse(JSON.stringify({ success: true, data: data }))
-    }
+    },
   }
 }
