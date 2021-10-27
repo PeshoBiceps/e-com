@@ -14,7 +14,7 @@ export default async function handler(req, res) {
       const order = new Order({
         email: req.body.email,
         totalAmount: req.body.totalAmount,
-        items: req.body.items,
+        images: req.body.images,
         paymentType: req.body.paymentType
       })
       try {

@@ -13,13 +13,11 @@ const fulfillOrder = async (session) => {
   await dbConnect()
   const order = new Order({
     email: session.customer_details.email,
-    totalAmount: session.amount_total * 100,
+    totalAmount: session.amount_total,
     images: JSON.parse(session.metadata.images),
-    paymentType: JSON.parse(session.payment_method_types)
+
   })
   await order.save()
-
-
 }
 
 export default async (req, res) => {

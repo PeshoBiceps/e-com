@@ -8,11 +8,8 @@ const orderSchema = new mongoose.Schema(
     totalAmount: {
       type: Number,
     },
-    images: [String],
-    paymentType: {
-      type: String,
-      enum: ["cash", "card"],
-    }
+    images: [],
+    paymentType: [],
   },
   { timestamps: true }
 )
