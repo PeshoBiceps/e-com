@@ -10,6 +10,7 @@ const endpointSecret = process.env.STRIPE_SIGNIN_SECRET
 const fulfillOrder = async (session) => {
   console.log('Fulfilling order', session)
   console.log(session.customer_details.email, session.amount_total, JSON.parse(session.metadata.images))
+  //Save order to database
   await dbConnect()
   const order = new Order({
     email: session.customer_details.email,

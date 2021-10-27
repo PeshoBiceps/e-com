@@ -11,7 +11,7 @@ const Layout = ({ children, title }) => {
       </Head>
 
       <Navbar />
-      <main className='min-h-[85vh]'>{children}</main>
+      <main className='min-h-screen'>{children}</main>
       <Footer />
     </div >
   )
