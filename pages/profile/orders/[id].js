@@ -1,6 +1,5 @@
 import Layout from "../../../components/Layout"
 import moment from "moment"
-import Link from 'next/link'
 import { useRouter } from 'next/router'
 //Icons
 import { HiArrowLeft } from 'react-icons/hi'
@@ -12,7 +11,9 @@ const OrderId = ({ order }) => {
 
   const router = useRouter()
 
-  const { _id, createdAt, email, items, paymentType, totalAmount } = order.data
+  console.log(order.data)
+
+  const { _id, createdAt, email, images, totalAmount } = order.data
 
   return (
     <Layout title='Order'>
@@ -35,21 +36,18 @@ const OrderId = ({ order }) => {
 
           <div className='pt-4'>
             <p className='font-semibold'>Products:</p>
-            {items.map((data, i) => (
-              <div key={i} className='flex'>
-                <Link className='h-full' href={`/products/${data.productId}`}>
-                  <p className='text-blue-600 cursor-pointer'>{data.productName}</p>
-                </Link>
-                <div className='pl-2'>
-                  <p>{data.qty} x {data.price} EUR</p>
+            <div className='flex'>
+              {images.map((image, i) => (
+                <div key={i} className='flex h-40 p-1'>
+                  <img src={image} alt='' />
                 </div>
-              </div>
+              ))}
+            </div>
 
-            ))}
           </div>
 
           <div className='flex pt-10 justify-between'>
-            <p>Payment method: {paymentType}</p>
+            <p>Payment method: card</p>
             <p>Total amount: <span className='font-semibold'>{totalAmount} EUR</span></p>
           </div>
         </div>

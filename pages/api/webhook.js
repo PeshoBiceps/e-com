@@ -14,7 +14,7 @@ const fulfillOrder = async (session) => {
   await dbConnect()
   const order = new Order({
     email: session.customer_details.email,
-    totalAmount: session.amount_total,
+    totalAmount: session.amount_total / 100,
     images: JSON.parse(session.metadata.images),
 
   })

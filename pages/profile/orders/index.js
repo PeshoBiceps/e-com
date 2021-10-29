@@ -24,9 +24,9 @@ const Orders = ({ orders }) => {
             <p className='flex items-center border-b-2 rounded-sm border-gray-500 text-gray-900 hover:text-black hover:border-black transition ease-in-out delay-75 cursor-pointer'><IoShirtOutline />My Orders</p>
             <p onClick={() => signOut({ callbackUrl: 'http://localhost:3000/' })} className='flex items-center border-b-2 rounded-sm text-gray-500 hover:text-black hover:border-black transition ease-in-out delay-75 cursor-pointer'><BiExit />Log out</p>
           </div>
-
           <div className='w-[90vw] max-w-[740px] space-y-3 my-2 mx-auto'>
             <h2 className='text-xl font-semibold'>My orders</h2>
+
             {orders.data.length === 0 ? (<div>No orders yet</div>) : (
               orders.data.map((data) => (
                 <div key={data._id} className='bg-gray-200 p-3'>
