@@ -12,15 +12,18 @@ Created with Next.JS, MongoDB/Mongoose, Redux.
 
 ## App Features
 
--Authentication (NextAuth)
--Payment (Stripe)
--Pagination, Filtering products on the backend
--Add new products
--Cart
-
-## Available pages
+- Authentication (NextAuth)
+- Payment (Stripe)
+- Pagination, Filtering products on the backend
+- Add new products
+- Cart
 
 ## Tech Stack
+
+- Next.JS
+- Redux
+- MongoDB/Mongoose
+- Tailwind
 
 ## License
 
