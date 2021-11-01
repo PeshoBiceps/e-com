@@ -3,7 +3,7 @@ import { buffer } from "micro"
 import { dbConnect } from '../../utils/dbConnect'
 import Order from '../../models/orderModel'
 
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
+const stripe = require('stripe')('sk_test_51Jo4HeHeVp56GqUdfyVsTjRUaPqBUM6QNBtqlsas31WyGXaYkcledku0N2NAecb6KFdhnVk54Ho54u1bAP9bc2zW00sGZGqlvt')
 
 const endpointSecret = 'whsec_L4VPPMW92NMXyJbiNDUr82gwrtIrlGhJ'
 
