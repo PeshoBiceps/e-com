@@ -5,8 +5,6 @@ import Order from '../../models/orderModel'
 
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
 
-const endpointSecret = process.env.STRIPE_SIGNIN_SECRET
-
 const fulfillOrder = async (session) => {
   console.log('Fulfilling order', session)
   console.log(session.customer_details.email, session.amount_total, JSON.parse(session.metadata.images))
@@ -31,7 +29,7 @@ export default async (req, res) => {
 
     //Verify that the event posted came from stripe 
     try {
-      event = stripe.webhooks.constructEvent(rawBody.toString(), signature, endpointSecret)
+      event = stripe.webhooks.constructEvent(rawBody.toString(), signature, process.env.STRIPE_SIGNIN_SECRET)
     } catch (err) {
       console.log("ERROR", err.message)
       return res.status(400).send(`Webhook error: ${err.message}`)
