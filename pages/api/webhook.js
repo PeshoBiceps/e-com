@@ -3,9 +3,9 @@ import { buffer } from "micro"
 import { dbConnect } from '../../utils/dbConnect'
 import Order from '../../models/orderModel'
 
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
+const stripe = require('stripe')(`${process.env.STRIPE_SECRET_KEY}`)
 
-const endpointSecret = process.env.STRIPE_SIGNIN_SECRET
+const endpointSecret = `${process.env.STRIPE_SIGNIN_SECRET}`
 
 const fulfillOrder = async (session) => {
   console.log('Fulfilling order', session)
